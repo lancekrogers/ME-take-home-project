@@ -64,7 +64,7 @@ AccountType(taking into account write version), and gracefully shut-down the sys
 These scenarios only cover a single accountID, but demonstrate expected ingestion/callback behaviors:
 
 **Scenario 1 - SingleUpdate**
-0ms-simulationstarts- ID1 scheduled to be ingested 550ms (0-1000ms random) later
+0ms - simulation starts - ID1 scheduled to be ingested 550ms (0-1000ms random) later
 550ms - ID1 v1 is “ingested”, we print it as indexed
 950ms - ID1 v1 callbackfires(and we log with version 1)
 
@@ -79,16 +79,16 @@ These scenarios only cover a single accountID, but demonstrate expected ingestio
 ## Deliverables
 
 Please take your time delivering a quality solution that shows your ability.Include:
-● A README file that contains:
-    ○ Instructions on how to run and test your code in a local environment through the commandline.
-    ○ A description of how and why you chose the design patterns you did
-    ○ A description of what observability you would add if this was a production system. What would you monitor for a production rollout?
+* A README file that contains:
+    * Instructions on how to run and test your code in a local environment through the commandline.
+    * A description of how and why you chose the design patterns you did
+    * A description of what observability you would add if this was a production system. What would you monitor for a production rollout?
 
-● Production ready code that:
-    ○ Follows community standard syntax and style
-    ○ Has no debug logging,TODOs,or FIXMEs
-    ○ Has test coverage to ensure quality and safety
-● All code zipped into a folder named me-challenege-YOUR-NAME.zip
+* Production ready code that:
+    * Follows community standard syntax and style
+    * Has no debug logging,TODOs,or FIXMEs
+    * Has test coverage to ensure quality and safety
+* All code zipped into a folder named me-challenege-YOUR-NAME.zip
 
 
 Please make sure that you’ve showed us your best code before mimicking production-like infrastructure.
