@@ -29,7 +29,7 @@ make run
 To rebuild the binary, ensure you have installed go then run ```make build```
 
 ### Design Overview and Motivations
-
+```zsh
 ├── cmd
 │   ├── config.yaml
 │   └── main.go
@@ -42,7 +42,7 @@ To rebuild the binary, ensure you have installed go then run ```make build```
     ├── ingestion
     ├── setup.go
     └── utils
-
+```
 #### Singleton Pattern
 
 I used a singleton pattern to implement the entry point to the service in main.go. This pattern helps ensure that the main application object is instantiated only once, providing a single point of access to the resources.
