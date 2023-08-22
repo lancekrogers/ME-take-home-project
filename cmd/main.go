@@ -17,7 +17,7 @@ func main() {
 	}
 
 	logger := log.New(os.Stdout, "", log.LstdFlags)
-	logger.SetPrefix("2023-01-01 00:00:00.000 ")
+	// logger.SetPrefix("2023-01-01 00:00:00.000 ")
 
 	ctx, cancel := context.WithCancel(context.Background())
 

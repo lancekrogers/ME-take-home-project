@@ -29,8 +29,6 @@ func Start(ctx context.Context, delay DelayGenerator, input string, repo db.Repo
 		logger = &log.Logger{}
 	}
 
-	accounts.LogRichestAccounts(ctx, repo)
-
 	file, err := os.Open(input)
 	if err != nil {
 		log.Fatal(err)
@@ -58,7 +56,7 @@ func Start(ctx context.Context, delay DelayGenerator, input string, repo db.Repo
 		updatesChannel <- update
 	}
 
-	// accounts.LogRichestAccounts(ctx, repo)
+	accounts.LogRichestAccounts(ctx, repo)
 
 	close(updatesChannel)
 }

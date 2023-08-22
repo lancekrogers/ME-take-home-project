@@ -11,7 +11,7 @@ createdb:
 dropdb:
 	docker exec -it me_challenge_db dropdb me_challenge 
 
-run: build
+run:
 	./challenge
 
 build:
