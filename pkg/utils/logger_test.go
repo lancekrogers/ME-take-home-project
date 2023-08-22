@@ -23,7 +23,6 @@ func TestLoggerFromContext(t *testing.T) {
 	assert.True(t, ok)
 	assert.Equal(t, logger, retrievedLogger)
 
-	// Test with a context without logger
 	_, ok = LoggerFromContext(ctx)
 	assert.False(t, ok)
 }

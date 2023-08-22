@@ -37,8 +37,6 @@ func (t *TestLogger) Logs() []string {
 	return t.logs
 }
 
-// Add other methods as needed
-
 func NewTestLogger() *TestLogger {
 	return &TestLogger{
 		logs: []string{},

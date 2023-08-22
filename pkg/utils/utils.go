@@ -75,7 +75,7 @@ func MapToStruct(dataMap map[string]interface{}) (interface{}, error) {
 	for key, value := range dataMap {
 		fieldType := reflect.TypeOf(value)
 		field := reflect.StructField{
-			Name: strings.Title(key), // Field name should be exported, so capitalize the first letter
+			Name: strings.Title(key),
 			Type: fieldType,
 		}
 		fields = append(fields, field)
@@ -84,7 +84,6 @@ func MapToStruct(dataMap map[string]interface{}) (interface{}, error) {
 	dynamicType := reflect.StructOf(fields)
 	dynamicValue := reflect.New(dynamicType).Elem()
 
-	// Populate the fields of the struct
 	for key, value := range dataMap {
 		field := dynamicValue.FieldByName(strings.Title(key))
 		field.Set(reflect.ValueOf(value))
