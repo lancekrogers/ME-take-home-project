@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS "accounts" CASCADE;
+DROP TABLE IF EXISTS "account_updates" CASCADE;

@@ -1,0 +1,6 @@
+DatabaseSettings:
+  Host: "localhost"
+  Port: "5432"
+  User: "root"
+  Password: "secret"
+  Database: "me_challenge"
