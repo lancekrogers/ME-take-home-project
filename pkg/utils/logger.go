@@ -3,43 +3,44 @@ package utils
 import (
 	"context"
 	"fmt"
-	"log"
 )
 
 type contextKey string
 
-const loggerKey contextKey = "logger"
+var loggerKey = contextKey("logger")
 
-func ContextWithLogger(ctx context.Context, logger *log.Logger) context.Context {
+type Logger interface {
+	Printf(format string, v ...interface{})
+}
+
+func (c contextKey) String() string {
+	return string(c)
+}
+func ContextWithLogger(ctx context.Context, logger Logger) context.Context {
 	return context.WithValue(ctx, loggerKey, logger)
 }
 
-func LoggerFromContext(ctx context.Context) (*log.Logger, bool) {
-	logger, ok := ctx.Value(loggerKey).(*log.Logger)
+func LoggerFromContext(ctx context.Context) (Logger, bool) {
+	logger, ok := ctx.Value(loggerKey).(Logger)
 	return logger, ok
 }
 
 type TestLogger struct {
-	log.Logger
-	messages []string
+	logs []string
 }
+
+func (t *TestLogger) Printf(format string, v ...interface{}) {
+	t.logs = append(t.logs, fmt.Sprintf(format, v...))
+}
+
+func (t *TestLogger) Logs() []string {
+	return t.logs
+}
+
+// Add other methods as needed
 
 func NewTestLogger() *TestLogger {
 	return &TestLogger{
-		messages: []string{},
+		logs: []string{},
 	}
 }
-
-func (tl *TestLogger) Printf(format string, v ...interface{}) {
-	message := fmt.Sprintf(format, v...)
-	tl.messages = append(tl.messages, message)
-}
-
-func (tl *TestLogger) Logs() []string {
-	return tl.messages
-}
-
-func ContextWithTestLogger(ctx context.Context, logger *TestLogger) context.Context {
-	return context.WithValue(ctx, loggerKey, logger)
-}
-

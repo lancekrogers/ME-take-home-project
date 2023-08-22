@@ -33,13 +33,13 @@ func Start(ctx context.Context, delay DelayGenerator, input string, repo db.Repo
 
 	file, err := os.Open(input)
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 	defer file.Close()
 
 	var accountUpdates []accounts.AccountUpdate
 	if err := json.NewDecoder(file).Decode(&accountUpdates); err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 
 	updatesChannel := make(chan accounts.AccountUpdate, len(accountUpdates))
@@ -81,7 +81,7 @@ func processAccountUpdate(ctx context.Context, update *accounts.AccountUpdate, r
 
 	data, err := utils.EncodeStructForDB(update.Data)
 	if err != nil {
-		logger.Println("Failed to prepare data field for db")
+		logger.Printf("Failed to prepare data field for db, Error: %v", err)
 	}
 	err = repo.UpsertAccountUpdate(ctx, &db.UpsertActUpdateParams{
 		ID:          update.ID,

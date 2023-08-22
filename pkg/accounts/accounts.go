@@ -73,10 +73,10 @@ func LogRichestAccounts(ctx context.Context, repo db.Repo) {
 
 	richestAccounts, err := repo.GetRichestAccountsByAccountType(ctx)
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 
 	for _, account := range richestAccounts {
-		logger.Printf("DEBUG: Value: %v", account)
+		logger.Printf("Richest %s account: Tokens: %d, ID: %v", account.AccountType, account.Tokens, account.ID)
 	}
 }

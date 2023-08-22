@@ -53,7 +53,8 @@ func TestGetAccountString(t *testing.T) {
 	}
 
 	repo.EXPECT().GetAccount(gomock.Any(), accountID).Return(account, nil)
-	ctx := utils.ContextWithTestLogger(context.Background(), utils.NewTestLogger())
+	logger := utils.NewTestLogger()
+	ctx := utils.ContextWithLogger(context.Background(), logger)
 	gotAccount, err := GetAccountString(ctx, accountID, repo)
 
 	assert.Equal(t, decodedData, gotAccount.Data)

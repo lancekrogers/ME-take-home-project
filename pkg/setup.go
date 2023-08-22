@@ -3,7 +3,6 @@ package pkg
 import (
 	"challenge/pkg/db"
 	"challenge/pkg/ingestion"
-	"challenge/pkg/utils"
 	"context"
 	"embed"
 	"log"
@@ -23,19 +22,14 @@ type TrxIndexingService struct {
 var fs embed.FS
 
 func NewTrxIndexingService(ctx context.Context, cfg *Config) (*TrxIndexingService, error) {
-	logger, ok := utils.LoggerFromContext(ctx)
-	if !ok {
-		logger = &log.Logger{}
-	}
-
 	d, err := iofs.New(fs, "db/migrations")
 	if err != nil {
-		logger.Fatal("New IOFS Error", "err", err.Error())
+		log.Fatal("New IOFS Error", "err", err.Error())
 	}
 
 	database, err := db.MigrateAndGetDatabaseWithIOFS(d, cfg.DatabaseSettings)
 	if err != nil {
-		logger.Fatal("Error Migrating and Getting Database", "err", err.Error())
+		log.Fatal("Error Migrating and Getting Database", "err", err.Error())
 	}
 
 	repo := db.NewRepo(database)
