@@ -26,6 +26,7 @@ type AccountResult struct {
 }
 
 func GetCurrentAccountVersion(ctx context.Context, id string, repo db.Repo) (versionNumber int64, found bool, rr error) {
+	// TODO Add caching using a mulock
 	currentVersion, err := repo.GetAccountVersion(ctx, id)
 	if err != nil {
 		if err == sql.ErrNoRows {
@@ -80,3 +81,9 @@ func LogRichestAccounts(ctx context.Context, repo db.Repo) {
 		logger.Printf("Richest %s account: Tokens: %d, ID: %v", account.AccountType, account.Tokens, account.ID)
 	}
 }
+
+// query(time = 110ms, type = TYPE1) = 10
+
+// func RichestAccountByType(ctx context.Context, ) (, error) {
+
+// }
