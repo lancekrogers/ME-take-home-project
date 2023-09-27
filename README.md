@@ -1,7 +1,7 @@
-# Magic Eden Engineering Challenge 
+# Engineering Challenge 
 
 ## Overview
-This repository contains the codebase for the Magic Eden Engineering Challenge. It includes various packages for handling accounts, callbacks, database operations, and ingestion of data.
+This repository contains the codebase for the ME Engineering Challenge. It includes various packages for handling accounts, callbacks, database operations, and ingestion of data.
 
 ### Instructions for running locally
 After unziping the project run the below commands from inside the project directory:
